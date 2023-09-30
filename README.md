@@ -12,6 +12,7 @@ For this application we will be using the following stack:
 Two commands have to be executed in order to properly build this application:
 
 ```bash
+npm install
 go build -o out main.go
 npx tailwindcss -i ./src/input.css -o ./dist/output.css
 ```
@@ -30,6 +31,7 @@ The following command will generate the required css when any change is made to 
 
 
 ```bash
+npm install
 npx tailwindcss -i ./templates/input.css -o ./dist/output.css --watch
 ```
 
