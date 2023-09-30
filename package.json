@@ -6,6 +6,10 @@
   "author": "Andres Court <andres@andrescourt.com>",
   "license": "MIT",
   "private": true,
+  "scripts": {
+       "build": "tailwindcss -i ./templates/input.css -o ./dist/output.css",
+       "watch": "tailwindcss -i ./templates/input.css -o ./dist/output.css --watch"
+  },
   "devDependencies": {
     "tailwindcss": "^3.3.3"
   }
