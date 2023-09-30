@@ -2,11 +2,14 @@ package main
 
 import (
 	"html/template"
+	"log"
 	"net/http"
+	"os"
 	"sync"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
+	"github.com/joho/godotenv"
 )
 
 type Counter struct {
@@ -34,6 +37,15 @@ func (c *Counter) GetValue() int {
 }
 
 func main() {
+	port, portRead := os.LookupEnv("PORT")
+	if !portRead {
+		godotenv.Load()
+		port, portRead = os.LookupEnv("PORT")
+		if !portRead {
+			log.Panic("Unable to load environment variables")
+		}
+	}
+
 	counter := &Counter{}
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
@@ -69,5 +81,6 @@ func main() {
 	fileServer := http.FileServer(http.Dir("./dist/"))
 	r.Handle("/css/*", http.StripPrefix("/css/", fileServer))
 
-	http.ListenAndServe(":3000", r)
+	log.Println(":INFO: Server running on port: ", port)
+	log.Panic(http.ListenAndServe(":"+port, r))
 }
