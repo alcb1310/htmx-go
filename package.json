@@ -1,0 +1,12 @@
+{
+  "name": "htmx-go",
+  "version": "1.0.0",
+  "description": "Add tailwind to htmx",
+  "main": "index.js",
+  "author": "Andres Court <andres@andrescourt.com>",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "tailwindcss": "^3.3.3"
+  }
+}
